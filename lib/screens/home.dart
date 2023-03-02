@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   double _imcResult = 0;
   String _textResult = "";
   String _textDescription = "";
+  double w = 0;
+  double h = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'IMC',
           style: TextStyle(
-            color: accentHexColor, 
+            color: accentHexColor,
             fontWeight: FontWeight.bold,
-            ),
+          ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -86,15 +88,26 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 30,
             ),
             GestureDetector(
+              
               onTap: () {
-                double h = double.parse(_heightController.text.replaceAll(',', '.'));
-                double w = double.parse(_weightController.text.replaceAll(',', '.'));
-                setState(() {
-                  _imcResult = w / (h * h);
-                  _textResult = ImcController().returnImc(_imcResult);
-                  _textDescription =
-                      ImcController().returnDescription(_imcResult);
-                });
+                if (_heightController.text.isNotEmpty &&
+                    _weightController.text.isNotEmpty) {
+                  h = ImcController.treatHightValue(_heightController);
+                  w = ImcController.treatHightValue(_weightController);
+
+                  setState(() {
+                    _imcResult = w / (h * h);
+                    _textResult = ImcController().returnImc(_imcResult);
+                    _textDescription =
+                        ImcController().returnDescription(_imcResult);
+                  });
+                } else {
+                  setState(() {
+                    _textResult = '';
+                    _imcResult = 0.00;
+                    _textDescription = 'Digite sua altura e peso!';
+                  });
+                }
               },
               child: Text(
                 "Calcular",

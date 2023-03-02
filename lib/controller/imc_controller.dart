@@ -2,6 +2,24 @@ class ImcController {
   String _textResult = "";
   String _textDescription = "";
 
+  static double treatHightValue(height) {
+    if (height.text.isNotEmpty) {
+      height = double.parse(height.text.replaceAll(',', '.'));
+      return height;
+    } else {
+      return 0.00;
+    }
+  }
+
+  static double treatWeightValue(weight) {
+    if (weight.text.isNotEmpty) {
+      weight = double.parse(weight.text.replaceAll(',', '.'));
+      return weight;
+    } else {
+      return 0.00;
+    }
+  }
+
   returnImc(imcResult) {
     if (imcResult < 18.5) {
       return _textResult += "Magreza: Grau 0";
@@ -11,7 +29,7 @@ class ImcController {
       return _textResult += "Sobrepeso: Grau: l";
     } else if (imcResult >= 30 && imcResult <= 39.9) {
       return _textResult += "Obesidade: Grau ll";
-    } else {
+    } else if (imcResult > 39.9) {
       return _textResult += "Obesidade Grave: Grau lll";
     }
   }

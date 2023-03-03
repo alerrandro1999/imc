@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imc/constants/app_constants.dart';
 import 'package:imc/controller/imc_controller.dart';
-import 'package:imc/widgets/left_bar.dart';
-import 'package:imc/widgets/right_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -50,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: TextField(
                     controller: _heightController,
                     style: TextStyle(
-                        fontSize: 42,
+                        fontSize: 38,
                         fontWeight: FontWeight.bold,
                         color: accentHexColor),
                     keyboardType: TextInputType.number,
@@ -58,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         border: InputBorder.none,
                         hintText: "Altura",
                         hintStyle: TextStyle(
-                            fontSize: 42,
+                            fontSize: 38,
                             fontWeight: FontWeight.w300,
                             color: Colors.white.withOpacity(.8))),
                   ),
@@ -69,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller: _weightController,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 42,
+                        fontSize: 38,
                         fontWeight: FontWeight.bold,
                         color: accentHexColor),
                     keyboardType: TextInputType.number,
@@ -77,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         border: InputBorder.none,
                         hintText: "Peso",
                         hintStyle: TextStyle(
-                            fontSize: 42,
+                            fontSize: 38,
                             fontWeight: FontWeight.w300,
                             color: Colors.white.withOpacity(.8))),
                   ),
@@ -88,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 30,
             ),
             GestureDetector(
-              
               onTap: () {
                 if (_heightController.text.isNotEmpty &&
                     _weightController.text.isNotEmpty) {
@@ -163,26 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const LeftBar(barWidth: 40),
-            const SizedBox(
-              height: 20,
-            ),
-            const LeftBar(barWidth: 70),
-            const SizedBox(
-              height: 20,
-            ),
-            const LeftBar(barWidth: 40),
-            const SizedBox(
-              height: 20,
-            ),
-            const RightBar(barWidth: 70),
-            const SizedBox(
-              height: 50,
-            ),
-            const RightBar(barWidth: 70),
           ],
         ),
       ),

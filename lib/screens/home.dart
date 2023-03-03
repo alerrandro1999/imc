@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   setState(() {
                     _imcResult = w / (h * h);
-                    _textResult = ImcController().returnImc(_imcResult);
+                    _textResult = ImcController().returnCategory(_imcResult);
                     _textDescription =
                         ImcController().returnDescription(_imcResult);
                   });
